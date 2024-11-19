@@ -8,7 +8,7 @@ JOIN
 JOIN 
     category c ON fc.category_id = c.category_id
 GROUP BY 
-    cateogry
+    c.name
 ORDER BY 
     number_of_films DESC;
 
@@ -42,7 +42,7 @@ ORDER BY
     
 SELECT 
     c.name AS category,
-    AVG(f.length) AS average_length
+    ROUND(AVG(f.length), 2) AS average_length
 FROM 
     film_category fc
 JOIN 
@@ -59,19 +59,19 @@ ORDER BY
 
 
 
-SELECT
-	c.name AS category,
-    AVG(f.length) AS average_length
-FROM
-	film_category fc
-JOIN
-	film f ON fc.film_id = f.film_id
-JOIN
-	category c ON fc.category_id = c.category_id
-GROUP BY
-	category
-ORDER BY
-	average_length DESC
+SELECT 
+    c.name AS category,
+    ROUND(AVG(f.length), 2) AS average_length
+FROM 
+    film_category fc
+JOIN 
+    film f ON fc.film_id = f.film_id
+JOIN 
+    category c ON fc.category_id = c.category_id
+GROUP BY 
+    c.name
+ORDER BY 
+    average_length DESC
 LIMIT 5;
 
 SELECT 
